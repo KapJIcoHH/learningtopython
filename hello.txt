@@ -1,1 +1,3 @@
 hello
+
+Trying to get used to Git commands like diff, push, pull and others
