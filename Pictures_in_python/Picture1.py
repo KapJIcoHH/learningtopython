@@ -3,7 +3,7 @@ from pygame.draw import *
 pygame.init()
 screen = pygame.display.set_mode((600, 400))
 
-screen.fill((255,255,255))
+screen.fill((255,155,100))
 
 circle(screen, (255, 255, 55), (300,200),150)
 circle(screen, (0, 0, 0), (300,200),151,2)
