@@ -47,21 +47,38 @@ def mountains():
     mountain1()
     mountain2()
     mountain3()
-def birds():
-    '''Creates a birds in a simple V shape'''
-    polygon(screen,(70, 31, 2),((200,200),(220,210),(240,200),(220,220),(200,200)))
-    polygon(screen,(70, 31, 2),((100,100),(120,110),(140,100),(120,120),(100,100)))
-    polygon(screen,(70, 31, 2),((300,300),(320,310),(340,300),(320,320),(300,300)))
-    polygon(screen,(70, 31, 2),((150,150),(170,160),(190,150),(170,170),(150,150)))
-    
+def bird(x=None,y=None,size=None):
+    '''Creates a birds in a simple V shape;
+    x,y are bird coordinates. Note that x=0 and y=0 is a top left screen corner, and there will be tip of the left wing of the bird;
+    size is a bird size'''
+    bird_shape = [(20,10),(40,0),(20,20),(0,0)] #inatial bird shape
+
+    if size != None or 1: #this cycle change bird shape, if size parameter is given
+        for i in range(len(bird_shape)):
+            x_new = bird_shape[i][0]*size
+            y_new = bird_shape[i][1]*size
+            bird_shape.pop(i)
+            bird_shape.insert(i,(x_new,y_new))   
+
+    for i in range(len(bird_shape)): #this cycle change bird coordinate
+        x_new = bird_shape[i][0]+x
+        y_new = bird_shape[i][1]+y
+        bird_shape.pop(i)
+        bird_shape.insert(i,(x_new,y_new))
+    polygon(screen,(70, 31, 2),(bird_shape))
+
+
 background()
 sun()
 mountains()
-birds()
-
-
-
-
+bird(890,17,0.3)
+bird(870,27,0.35)
+bird(904,22,0.4)
+bird(790,35,0.5)
+bird(700,100,1)
+bird(400,520,1.3)
+bird(450,504,1)
+bird(440,570,1.7)
 
 clock = pygame.time.Clock()
 
